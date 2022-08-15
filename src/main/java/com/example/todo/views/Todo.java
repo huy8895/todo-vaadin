@@ -9,10 +9,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "", layout = AppLayoutSecondaryNavigation.class)
-public class MainView extends VerticalLayout {
+@Route(value = "todo", layout = MainLayout.class)
+public class Todo extends VerticalLayout {
 
-    public MainView() {
+    public Todo() {
         VerticalLayout todosList = new VerticalLayout();
         TextField taskField = new TextField();
         Button addButton = new Button("Add");
