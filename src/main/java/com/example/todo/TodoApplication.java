@@ -13,7 +13,7 @@ public class TodoApplication {
         SpringApplication.run(TodoApplication.class, args);
     }
 
-    @GetMapping("")
+    @GetMapping("/ping")
     public Object ping(){
         return "pong!";
     }
