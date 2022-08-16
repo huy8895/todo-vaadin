@@ -17,20 +17,25 @@ public class Todo extends VerticalLayout {
     public Todo() {
         VerticalLayout todosList = new VerticalLayout();
         TextField taskField = new TextField();
+//        taskField.getStyle().set("")
         Button addButton = new Button("Add");
         addButton.addClickListener(click -> {
             Checkbox checkbox = new Checkbox(taskField.getValue());
             todosList.add(checkbox);
+            taskField.clear();
         });
         addButton.addClickShortcut(Key.ENTER);
 
+        final var header = new H1("Vaadin Todo");
+        header.getStyle().set("margin", "0px");
         add(
-                new H1("Vaadin Todo"),
-                todosList,
+                header,
                 new HorizontalLayout(
                         taskField,
                         addButton
-                )
-        );
+                ),
+                todosList
+
+                );
     }
 }

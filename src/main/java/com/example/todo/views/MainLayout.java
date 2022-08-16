@@ -10,13 +10,7 @@ import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.tabs.Tab;
-import com.vaadin.flow.component.tabs.Tabs;
-import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.RouterLink;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -78,7 +72,8 @@ public class MainLayout extends AppLayout {
         nav.addClassNames("app-nav");
 
         nav.addItem(new AppNavItem("Dashboard", DashboardView.class, "la la-globe"));
-        nav.addItem(new AppNavItem("Todo", Todo.class, "la la-globe"));
+        nav.addItem(new AppNavItem("Todo", Todo.class, "la la-phone"));
+        nav.addItem(new AppNavItem("test", Test.class, "las la-universal-access"));
 
 
         return nav;
@@ -93,70 +88,6 @@ public class MainLayout extends AppLayout {
     private String getCurrentPageTitle() {
         PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
         return title == null ? "" : title.value();
-    }
-
-    private void createHeader() {
-//        DrawerToggle toggle = new DrawerToggle();
-//
-//        H2 viewTitle = new H2("Orders");
-//        viewTitle.getStyle()
-//                 .set("font-size", "var(--lumo-font-size-l)")
-//                 .set("margin", "0");
-//
-//        var subViews = this.getSecondaryNavigation();
-//
-//        HorizontalLayout wrapper = new HorizontalLayout(toggle, viewTitle);
-//        wrapper.setAlignItems(FlexComponent.Alignment.CENTER);
-//        wrapper.setSpacing(false);
-//
-//        VerticalLayout viewHeader = new VerticalLayout(wrapper, subViews);
-//        viewHeader.setPadding(false);
-//        viewHeader.setSpacing(false);
-//
-//        addToNavbar(viewHeader);
-    }
-
-    private Tabs getSecondaryNavigation() {
-        Tab details = new Tab("Details");
-        Tab payment = new Tab("Payment");
-        Tab shipping = new Tab("Shipping");
-
-        Tabs tabs = new Tabs(details, payment, shipping);
-        tabs.addThemeVariants(TabsVariant.LUMO_CENTERED);
-        return tabs;
-    }
-
-    private void createDrawer() {
-        H1 appTitle = new H1("MyApp");
-        appTitle.getStyle()
-                .set("font-size", "var(--lumo-font-size-l)")
-                .set("line-height", "var(--lumo-size-l)")
-                .set("margin", "0 var(--lumo-space-m)");
-        var views = this.getPrimaryNavigation();
-        addToDrawer(appTitle, views);
-    }
-
-    private Tabs getPrimaryNavigation() {
-        Tab profile = new Tab(
-                VaadinIcon.USER.create(),
-                new Span("Profile")
-        );
-        Tab settings = new Tab(
-                VaadinIcon.COG.create(),
-                new Span("Settings")
-        );
-        Tab notifications = new Tab(
-                VaadinIcon.BELL.create(),
-                new Span("Notifications")
-        );
-        Tab dashboard = new Tab(
-                VaadinIcon.DASHBOARD.create(),
-                new RouterLink("Todo", Todo.class)
-        );
-
-        Tabs tabs = new Tabs(dashboard,profile, settings, notifications);
-        tabs.setOrientation(Tabs.Orientation.VERTICAL);
-        return tabs;
     }
 
 }

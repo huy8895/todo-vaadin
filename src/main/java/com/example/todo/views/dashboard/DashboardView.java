@@ -22,9 +22,11 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.example.todo.views.dashboard.ServiceHealth.Status;
+import com.vaadin.flow.router.RouteAlias;
 
 @PageTitle("Dashboard")
 @Route(value = "dashboard", layout = MainLayout.class)
+@RouteAlias(value = "", layout = MainLayout.class)
 //@RolesAllowed("ADMIN")
 public class DashboardView extends Main {
 

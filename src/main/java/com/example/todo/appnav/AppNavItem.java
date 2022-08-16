@@ -293,6 +293,7 @@ public class AppNavItem extends Component {
     public AppNavItem setIconClass(String iconClass) {
         Span icon = new Span();
         icon.setClassName(iconClass);
+        icon.getStyle().set("font-size", "var(--lumo-icon-size-m)");
         setIcon(icon);
         return this;
     }
