@@ -11,7 +11,6 @@ import javax.persistence.*;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "tag")
 public class Tag {
     @Id

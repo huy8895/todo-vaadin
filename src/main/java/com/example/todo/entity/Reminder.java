@@ -13,7 +13,6 @@ import java.time.LocalTime;
 @RequiredArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "reminder",
         indexes = {
                 @Index(columnList = "list_id"),
@@ -35,10 +34,8 @@ public class Reminder {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    @Temporal(TemporalType.DATE)
     private LocalDate date;
 
-    @Temporal(TemporalType.TIME)
     private LocalTime time;
 
     @Column(name = "tag_id")
