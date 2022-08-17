@@ -1,5 +1,7 @@
 package com.example.todo.components;
 
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -22,6 +24,28 @@ public class RouteTabs extends Tabs implements BeforeEnterObserver {
         );
         routerLinkTabMap.put(routerLink, new Tab(routerLink));
         add(routerLinkTabMap.get(routerLink));
+    }
+
+    public void add(Span span, Component... components) {
+        span.getChildren()
+            .findFirst()
+            .filter(component -> component instanceof RouterLink)
+            .map(component -> (RouterLink) component)
+            .ifPresent(routerLink -> {
+                routerLink.setHighlightCondition(HighlightConditions.sameLocation());
+                routerLink.setHighlightAction(
+                        (link, shouldHighlight) -> {
+                            if (shouldHighlight) {
+                                setSelectedTab(routerLinkTabMap.get(routerLink));
+                            }
+                        }
+                );
+
+                routerLinkTabMap.put(routerLink, new Tab(span, components[0]));
+                final var tab = routerLinkTabMap.get(routerLink);
+                add(tab);
+            });
+
     }
 
     @Override
