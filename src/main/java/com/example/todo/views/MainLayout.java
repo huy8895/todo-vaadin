@@ -74,7 +74,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new AppNavItem("Dashboard", DashboardView.class, "la la-globe"));
         nav.addItem(new AppNavItem("Todo", Todo.class, "la la-phone"));
         nav.addItem(new AppNavItem("test", Test.class, "las la-universal-access"));
-        nav.addItem(new AppNavItem("tabs-with-routes", TabsWithRoutes.class, "las la-universal-access"));
+        nav.addItem(new AppNavItem("list", ListView.class, "las la-universal-access"));
         nav.addItem(new AppNavItem("tabs-theme-equal-width", TabsThemeEqualWidth.class, "las la-universal-access"));
 
 

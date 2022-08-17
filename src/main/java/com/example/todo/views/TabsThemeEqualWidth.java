@@ -1,7 +1,6 @@
 package com.example.todo.views;
 
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.tabs.Tab;
@@ -10,7 +9,6 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouterLink;
 
 @Route(value = "tabs-theme-equal-width" , layout = MainLayout.class)
 public class TabsThemeEqualWidth  extends Div {
@@ -33,7 +31,6 @@ public class TabsThemeEqualWidth  extends Div {
 //        );
 
         Tabs tabs = new Tabs(open, completed);
-        tabs.addSelectedChangeListener(event -> this.navigate(event.getSelectedTab()));
         tabs.addThemeVariants(TabsVariant.LUMO_EQUAL_WIDTH_TABS);
         add(tabs);
     }
@@ -43,7 +40,7 @@ public class TabsThemeEqualWidth  extends Div {
     }
 
     @Route(value = "tabs-theme-equal-width/a", layout = MainLayout.class)
-    private static class ViewA extends TabsWithRoutes {
+    private static class ViewA extends ListView {
 
         public ViewA() {
             add(new Text("Content of A"));
@@ -51,7 +48,7 @@ public class TabsThemeEqualWidth  extends Div {
     }
 
     @Route(value = "tabs-theme-equal-width/b", layout = MainLayout.class)
-    private static class ViewB extends TabsWithRoutes implements HasUrlParameter<String> {
+    private static class ViewB extends ListView implements HasUrlParameter<String> {
 
         @Override
         public void setParameter(BeforeEvent beforeEvent, String s) {
