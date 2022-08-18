@@ -3,11 +3,15 @@ package com.example.todo.views.todo;
 import com.example.todo.entity.Catelog;
 import com.example.todo.entity.Priority;
 import com.example.todo.entity.Tag;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
@@ -50,7 +54,16 @@ public class ReminderForm extends FormLayout {
             datePicker,
             timePicker,
             tags,
-            priority
+            priority,
+            this.createButtonsLayout()
             );
+    }
+
+    private Component createButtonsLayout() {
+        this.done.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        this.cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        this.done.addClickShortcut(Key.ENTER);
+        this.cancel.addClickShortcut(Key.ESCAPE);
+        return new HorizontalLayout(done, cancel);
     }
 }
