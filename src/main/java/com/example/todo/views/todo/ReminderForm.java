@@ -4,6 +4,7 @@ import com.example.todo.entity.Catelog;
 import com.example.todo.entity.Priority;
 import com.example.todo.entity.Reminder;
 import com.example.todo.entity.Tag;
+import com.example.todo.entity.dto.ReminderDto;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -25,7 +26,7 @@ import com.vaadin.flow.shared.Registration;
 import java.util.List;
 
 public class ReminderForm extends FormLayout {
-    private Reminder reminder;
+    private Reminder reminder = new Reminder();
     TextField title = new TextField("Title");
     TextField notes = new TextField("Notes");
     EmailField url = new EmailField("URL");
@@ -40,7 +41,11 @@ public class ReminderForm extends FormLayout {
 
     public ReminderForm(List<Tag> tagList, List<Catelog> catelogs) {
         addClassName("reminder-form");
-        binder.bindInstanceFields(this);
+        binder.forField(title)
+              .bind(Reminder::getTitle, Reminder::setTitle);
+
+        binder.bind(notes, Reminder::getNotes, Reminder::setNotes);
+
         list.setItems(catelogs);
         list.setItemLabelGenerator(Catelog::getName);
         tags.setItems(tagList);
